@@ -3,37 +3,57 @@
 # Author: Nishtha Maurya | Course: Open Source Software
 
 # --- Variables ---
-# Storing static strings in variables for easy configuration
-STUDENT_NAME="Nishtha Maurya" 
-SOFTWARE_CHOICE="Apache HTTP Server" 
+# Stores the name of the student for display in the report
+STUDENT_NAME="Nishtha Maurya"
+
+# Stores the chosen open-source software (currently unused in output)
+SOFTWARE_CHOICE="Git"
 
 # --- System info ---
-# Using command substitution $() to run commands and store their output
+# Retrieves the current Linux kernel version
 KERNEL=$(uname -r)
+
+# Extracts the OS distribution name from /etc/os-release
+DISTRO=$(grep '^PRETTY_NAME' /etc/os-release | cut -d= -f2 | tr -d '"')
+
+# Gets the current logged-in username
 USER_NAME=$(whoami)
+
+# Gets the home directory of the current user
 HOME_DIR=$HOME
+
+# Retrieves system uptime in a human-readable format
 UPTIME=$(uptime -p)
 
-# Extracting the distribution name from the os-release file
-DISTRO=$(grep PRETTY_NAME /etc/os-release | cut -d '"' -f 2)
-
-# Getting the current date and time
-CURRENT_DATE=$(date)
+# Gets the current system date and time
+CURRENT_TIME=$(date)
 
 # --- Display ---
-# Using echo and basic output formatting to create a clean UI
-echo "=========================================="
+# Prints header section of the report
+echo "========================================"
 echo " Open Source Audit — $STUDENT_NAME"
-echo "=========================================="
-echo "Software   : $SOFTWARE_CHOICE"
-echo "OS/Distro  : $DISTRO"
-echo "Kernel     : $KERNEL"
-echo "User       : $USER_NAME"
-echo "Home Dir   : $HOME_DIR"
-echo "Uptime     : $UPTIME"
-echo "Date/Time  : $CURRENT_DATE"
-echo "------------------------------------------"
-echo "License Note: The core Linux kernel powering"
-echo "this operating system is distributed under"
-echo "the GNU General Public License v2 (GPLv2)."
-echo "=========================================="
+echo "========================================"
+
+# Displays system distribution and kernel details
+echo "Distribution : $DISTRO"
+echo "Kernel       : $KERNEL"
+
+echo "----------------------------------------"
+
+# Displays user-related information
+echo "User         : $USER_NAME"
+echo "Home Dir     : $HOME_DIR"
+
+echo "----------------------------------------"
+
+# Displays system uptime and current date/time
+echo "Uptime       : $UPTIME"
+echo "Date & Time  : $CURRENT_TIME"
+
+echo "----------------------------------------"
+
+# Displays license-related information about Linux
+echo "License Info : Most Linux distributions are based on the GNU General Public License (GPL), which ensures users can run, study, modify, and share the software freely."
+
+# Prints footer line
+echo "========================================"
