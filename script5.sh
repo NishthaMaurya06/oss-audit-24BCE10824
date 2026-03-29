@@ -1,39 +1,37 @@
 #!/bin/bash
 # Script 5: Open Source Manifesto Generator
 # Author: Nishtha Maurya | Course: Open Source Software
+# Generates a personalized open-source philosophy statement
 
-# --- Alias Concept Demonstration ---
-# To make this script run by just typing 'manifesto', 
-# add this line to your ~/.bashrc file:
-# alias manifesto='~/script5.sh'
-
-echo "=========================================="
-echo "    Open Source Manifesto Generator       "
-echo "=========================================="
 echo "Answer three questions to generate your manifesto."
 echo ""
 
+# --- User Input ---
+# Takes input from user using read
 read -p "1. Name one open-source tool you use every day: " TOOL
 read -p "2. In one word, what does 'freedom' mean to you? " FREEDOM
 read -p "3. Name one thing you would build and share freely: " BUILD
 
+# --- Date ---
+# Gets current date in readable format
 DATE=$(date '+%d %B %Y')
+
+# --- Output file ---
+# Creates filename using current username
 OUTPUT="manifesto_$(whoami).txt"
 
-echo "Generating your personalized manifesto..."
-sleep 1 
+# --- Compose and write manifesto ---
+# Uses string concatenation and writes to file using >
+echo "On $DATE, I reflect on the importance of open source." >$OUTPUT
+echo "Using tools like $TOOL reminds me that technology should empower people." >>$OUTPUT
+echo "To me, freedom means $FREEDOM, and it drives me to create and share." >>$OUTPUT
+echo "I aspire to build $BUILD and contribute it openly for the benefit of everyone." >>$OUTPUT
+echo "This is my commitment to the open-source community." >>$OUTPUT
 
-echo "------------------------------------------" > "$OUTPUT"
-echo "        MY OPEN SOURCE MANIFESTO          " >> "$OUTPUT"
-echo "------------------------------------------" >> "$OUTPUT"
+# --- Alias Concept (example) ---
+# You can create a shortcut to run this script:
+# alias manifesto='./script5.sh'
 
-echo "On this day, $DATE, I declare my commitment to the open-source philosophy. Every day, tools like $TOOL empower my work. To me, the essence of this movement is $FREEDOM. In that spirit, I pledge to one day build and share $BUILD with the world." >> "$OUTPUT"
-
-echo "------------------------------------------" >> "$OUTPUT"
-
-echo " "
-echo "[*] Manifesto successfully saved to $OUTPUT"
-echo " "
-
-cat "$OUTPUT"
-echo "=========================================="
+# --- Output result ---
+echo "Manifesto saved to $OUTPUT"
+cat $OUTPUT
