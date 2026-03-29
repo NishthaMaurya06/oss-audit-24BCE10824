@@ -1,62 +1,158 @@
-# oss-audit-24BCE10824
+# Open Source Software Lab Assignment
 
-# oss-audit-24BCE10824
-Capstone project containing shell scripts for the Open Source Software Audit of the Apache HTTP Server.
+## Student Details
 
-# Open Source Software Audit
-**Student Name:** NISHTHA MAURYA
-**Roll Number:** 24BCE10824  
-**Chosen Software:** Apache HTTP Server
+* **Name:** Nishtha Maurya
+* **Roll Number:** 24BCE10824
+* **Chosen Software:** Git
 
-## Project Overview
-This repository contains five custom Bash shell scripts written for an Ubuntu Linux environment as part of an open-source audit of the Apache HTTP Server. 
+---
 
-## Description of Scripts
-* **`script1.sh` (System Identity Report):** Dynamically retrieves core Linux host identity metrics (Kernel, OS, Uptime) using command substitution.
-* **`script2.sh` (FOSS Package Inspector):** Verifies the APT installation status, version, and architecture of the Apache package.
-* **`script3.sh` (Disk and Permission Auditor):** Loops through and audits standard system directories and the `/etc/apache2` configuration folder for storage size and ownership permissions.
-* **`script4.sh` (Log File Analyzer):** Parses log files line-by-line using a conditional while-read loop to flag and count specific system errors.
-* **`script5.sh` (Manifesto Generator):** An interactive prompt that generates a personalized open-source philosophy text file using user input and string concatenation.
+## Overview
 
-## Dependencies Required
-To run these scripts successfully, ensure the following dependencies are met on your system:
-* **Operating System:** Ubuntu / Debian-based Linux distribution (or Windows Subsystem for Linux).
-* **Environment:** Standard Bash shell.
-* **Software Dependency:** The **Apache HTTP Server** must be installed on the system (`sudo apt install apache2`). Without this, Script 2 and Script 3 will report that the software and its configuration directories (`/etc/apache2`) are missing.
+This assignment consists of five Bash scripts that demonstrate key Linux and open-source concepts such as system inspection, package management, file analysis, automation, and user interaction.
 
-## Step-by-Step Instructions to Run the Codes
+---
 
-**Step 1: Open your Terminal**
-Launch your Ubuntu Linux terminal (or WSL environment).
+## Script Descriptions
 
-**Step 2: Navigate to the Directory**
-Use the `cd` command to navigate to the folder where you have downloaded or cloned these script files.
+### **Script 1: System Identity Report**
 
-**Step 3: Grant Execution Permissions**
-By default, Linux text files are not executable. You must grant execution rights to each script before running it for the first time using the `chmod` command. 
+* Displays system-level information including:
+
+  * Linux distribution
+  * Kernel version
+  * Username and home directory
+  * System uptime and current date/time
+* Provides a brief note about the GNU General Public License (GPL)
+
+---
+
+### **Script 2: FOSS Package Inspector**
+
+* Checks whether **Git** is installed on the system
+* Displays:
+
+  * Version
+  * License
+  * Summary
+* Uses a case statement to describe Git’s purpose
+
+---
+
+### **Script 3: Disk and Permission Auditor**
+
+* Iterates through important system directories:
+
+  * `/etc`, `/var/log`, `/home`, `/usr/bin`, `/tmp`
+* Displays:
+
+  * Directory size
+  * Permissions
+  * Owner and group
+* Checks for the existence of Git configuration file (`~/.gitconfig`)
+
+---
+
+### **Script 4: Log File Analyzer**
+
+* Reads a log file line by line
+* Counts occurrences of a keyword (default: `error`)
+* Displays:
+
+  * Total count
+  * Last 5 matching lines
+* Includes retry logic if the file is empty
+
+---
+
+### **Script 5: Open Source Manifesto Generator**
+
+* Takes user input interactively:
+
+  * Tool used
+  * Meaning of freedom
+  * Something to build and share
+* Generates a personalized manifesto
+* Saves output to a `.txt` file
+
+---
+
+## How to Run the Scripts
+
+### **Step 1: Give Execute Permission**
+
 ```bash
-chmod +x script1.sh
-chmod +x script2.sh
-chmod +x script3.sh
-chmod +x script4.sh
-chmod +x script5.sh.
+chmod +x script1.sh script2.sh script3.sh script4.sh script5.sh
 ```
 
-**Step 4: Execute the Scripts**
-Run the scripts by prefixing the filename with ./ (which tells Linux to look in the current directory).
+---
 
-To run Script 1, 2, 3, or 5:
+### **Step 2: Run Each Script**
+
+#### Script 1
+
 ```bash
 ./script1.sh
 ```
-Special Instruction for Script 4 (script4.sh):
-Script 4 is a Log File Analyzer that requires a target file to read. You must pass a file path as an argument when you run it.
 
-To test it, first create a dummy log file:
+#### Script 2
+
 ```bash
-echo -e "System booted\nWarning: high memory\nError: connection timeout\nError: Apache failed" > testlog.txt
+./script2.sh
 ```
-Then, run the script against the test file:
+
+#### Script 3
+
 ```bash
-./script4.sh testlog.txt
+./script3.sh
 ```
+
+#### Script 4
+
+```bash
+./script4.sh /path/to/logfile error
+```
+
+Example:
+
+```bash
+./script4.sh /var/log/syslog error
+```
+
+#### Script 5
+
+```bash
+./script5.sh
+```
+
+---
+
+## Dependencies
+
+Ensure the following tools are installed on your Linux system:
+
+* **Bash** (default shell)
+* **coreutils** (for commands like `ls`, `du`, `cut`)
+* **grep**
+* **awk**
+* **rpm** (for Script 2, Fedora/RHEL-based systems)
+
+Optional (for full compatibility):
+
+* `dpkg` (for Debian-based systems, if adapting script)
+
+---
+
+## Notes
+
+* Scripts are designed for Linux environments.
+* Script 2 uses `rpm`, so it works best on Fedora/RHEL systems.
+* Script 4 requires a valid log file path.
+* Script 5 requires user interaction unless automated.
+
+---
+
+## Conclusion
+
+These scripts collectively demonstrate practical usage of shell scripting concepts such as loops, conditionals, file handling, command-line arguments, and automation in an open-source environment.
