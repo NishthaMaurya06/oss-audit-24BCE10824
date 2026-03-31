@@ -53,7 +53,8 @@ echo "Date & Time  : $CURRENT_TIME"
 echo "----------------------------------------"
 
 # Displays license-related information about Linux
-echo "License Info : Most Linux distributions are based on the GNU General Public License (GPL), which ensures users can run, study, modify, and share the software freely."
+echo "License Info : Most Linux distributions are based on the GNU General Public License (GPL), 
+ which ensures users can run, study, modify, and share the software freely."
 
 # Prints footer line
 echo "========================================"
